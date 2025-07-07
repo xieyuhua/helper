@@ -1,0 +1,30 @@
+{
+  "type": "library",
+  "name": "xieyuhua/helper",
+  "homepage": "https://github.com/xieyuhua/helper",
+  "description": "helper for PHP",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Xyh",
+      "email": "1130107545@qq.com",
+      "homepage": "http://ctolog.com"
+    }
+  ],
+  "keywords": [
+    "orm",
+    "function"
+  ],
+  "require": {
+    "topthink/framework": "5.1.*",
+    "php": ">=7.2"
+  },
+  "autoload": {
+    "files": [
+      "src/common.php"
+    ],
+    "psr-4": {
+      "library\\": "src"
+    }
+  }
+}
