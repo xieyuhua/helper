@@ -1,13 +1,13 @@
 <?php
 
-namespace library\tools;
+namespace xyhlibrary\tools;
 
 use think\Db;
 use think\db\Query;
 
 /**
  * Class Data
- * @package library\tools
+ * @package xyhlibrary\tools
  */
 class Data
 {

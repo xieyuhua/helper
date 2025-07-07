@@ -1,6 +1,6 @@
 <?php
 
-namespace library\tools;
+namespace xyhlibrary\tools;
 
 use think\App;
 use think\Container;
@@ -9,7 +9,7 @@ use think\exception\HttpResponseException;
 /**
  * JsonRpc 服务端
  * Class JsonRpcServer
- * @package library\tools
+ * @package xyhlibrary\tools
  */
 class JsonRpcServer
 {

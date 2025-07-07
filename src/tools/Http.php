@@ -1,11 +1,11 @@
 <?php
 
-namespace library\tools;
+namespace xyhlibrary\tools;
 
 /**
  * CURL数据请求管理器
  * Class Http
- * @package library\tools
+ * @package xyhlibrary\tools
  */
 class Http
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace library\tools;
+namespace xyhlibrary\tools;
 
 /**
  * JsonRpc 客户端
  * Class JsonRpcClient
- * @package library\tools
+ * @package xyhlibrary\tools
  */
 class JsonRpcClient
 {

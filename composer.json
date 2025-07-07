@@ -24,7 +24,7 @@
       "src/common.php"
     ],
     "psr-4": {
-      "library\\": "src"
+      "xyhlibrary\\": "src"
     }
   }
 }

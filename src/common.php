@@ -1,8 +1,8 @@
 <?php
 
-use library\tools\Crypt;
-use library\tools\Data;
-use library\tools\Http;
+use xyhlibrary\tools\Crypt;
+use xyhlibrary\tools\Data;
+use xyhlibrary\tools\Http;
 use think\Console;
 use think\Db;
 use think\db\Query;
@@ -780,6 +780,6 @@ if (!function_exists('list_to_tree')) {
 if (class_exists('think\Console')) {
     Console::addDefaultCommands([
         // 注册清理无效会话
-        'library\command\Sess',
+        'xyhlibrary\command\Sess',
     ]);
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace library\tools;
+namespace xyhlibrary\tools;
 
 /**
  * 数据加密解密工具
  * Class Crypt
- * @package library\tools
+ * @package xyhlibrary\tools
  */
 class Crypt
 {

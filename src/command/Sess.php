@@ -1,6 +1,6 @@
 <?php
 
-namespace library\command;
+namespace xyhlibrary\command;
 
 use think\console\Command;
 use think\console\Input;
@@ -9,7 +9,7 @@ use think\console\Output;
 /**
  * 清理会话文件
  * Class Sess
- * @package library\command
+ * @package xyhlibrary\command
  */
 class Sess extends Command
 {
@@ -19,7 +19,7 @@ class Sess extends Command
      */
     protected function configure()
     {
-        $this->setName('xclean:session')->setDescription('Clean up invalid session files');
+        $this->setName('xyhclean:session')->setDescription('Clean up invalid session files');
     }
 
     /**

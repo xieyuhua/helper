@@ -1,5 +1,5 @@
 <?php
-namespace library;
+namespace xyhlibrary;
 
 use think\facade\Db;
 use think\Validate;
