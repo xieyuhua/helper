@@ -9,7 +9,7 @@ use think\db\Query;
 use think\facade\Cache;
 
 
-if (!function_exists('model')) {
+if (!function_exists('regularExtraction')) {
 	/**
 	 * 正则提取
 	 *
