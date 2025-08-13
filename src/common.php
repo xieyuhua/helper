@@ -20,7 +20,7 @@ if (!function_exists('model')) {
 		//$str = 'a:1|b:2&d:645454&';
 		//$start = ':'; // 开始
 		//$end = '\||&'; // 结束
-		preg_match_all('/'.$start.'(.*?)(?'.$star.$end.'|$)/', $str, $matches);
+		preg_match_all('/'.$start.'(.*?)(?:'.$end.'|$)/', $str, $matches);
 		return $matches[1]
 	}
 
