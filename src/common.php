@@ -9,6 +9,22 @@ use think\db\Query;
 use think\facade\Cache;
 
 
+if (!function_exists('model')) {
+	/**
+	 * 正则提取
+	 *
+	 * @param string $str
+	 *            
+	 */
+	function regularExtraction($str = '', $start=':', $end='\||&') {
+		//$str = 'a:1|b:2&d:645454&';
+		//$start = ':'; // 开始
+		//$end = '\||&'; // 结束
+		preg_match_all('/'.$start.'(.*?)(?'.$star.$end.'|$)/', $str, $matches);
+		return $matches[1]
+	}
+
+}
 
 if (!function_exists('model')) {
 	/**
