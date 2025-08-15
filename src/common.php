@@ -9,9 +9,6 @@ use think\db\Query;
 use think\facade\Cache;
 
 
- explode(';',$value['question5']);
- preg_split("/\s*(;|；)\s*/", $value['question5']);
-
 if (!function_exists('sprintfxh')) {
 	/**
 	 * sprintfxh 001
@@ -23,19 +20,6 @@ if (!function_exists('sprintfxh')) {
 		return sprintf("%0".$num."s",$str);
 	}
 }
-
-if (!function_exists('explodexh')) {
-	/**
-	 * explode
-	 *
-	 * @param string $str
-	 *            
-	 */
-	function explodexh($s = '', $str) {
-		return preg_split("/\s*(".$s.")\s*/",  $str);
-	}
-}
-
 
 if (!function_exists('regularExtraction')) {
 	/**
