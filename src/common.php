@@ -12,6 +12,17 @@ use think\facade\Cache;
  explode(';',$value['question5']);
  preg_split("/\s*(;|；)\s*/", $value['question5']);
 
+if (!function_exists('sprintfxh')) {
+	/**
+	 * sprintfxh 001
+	 *
+	 * @param string $str
+	 *            
+	 */
+	function sprintfxh( string|int $str, $num=2) {
+		return sprintf("%0".$num."s",$str);
+	}
+}
 
 if (!function_exists('explodexh')) {
 	/**
