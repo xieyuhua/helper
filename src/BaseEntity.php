@@ -322,19 +322,29 @@ class BaseEntity extends Entity
      * @param [type] $data
      * @return void
      */
+    /**
+     * 预加载数据处理
+     *
+     * @param [type] $data
+     * @return void
+     */
     final public function withSelect(&$data)
     {
         // ['order_goods', 'goods_list', 'order_id', 'id', '*', [['status', '=', 1]] ],
+        // $table_name, $alias, $pk_id, $id, $field, $where, $join, $group
         $withData = [];
+        // print_r($this->withs);
         foreach ($this->withs as $wvalue) {
             // 初始值
-            [$table_name, $alias, $pk_id, $id, $field, $where] = [
+            [$table_name, $alias, $pk_id, $id, $field, $where, $join, $group] = [
                 $wvalue[0] ?? 'table_name',
                 $wvalue[1] ?? '',
                 $wvalue[2] ?? 'pk_id',
                 $wvalue[3] ?? 'id',
                 $wvalue[4] ?? '*',
                 $wvalue[5] ?? [],
+                $wvalue[6] ?? [],
+                $wvalue[7] ?? '',
             ];
             if (empty($where) || !is_array($where)) {
                 $where = [];
@@ -349,15 +359,19 @@ class BaseEntity extends Entity
                 $alias = $table_name;
             }
             //
-            $where[] = [$pk_id, 'in', $ids_arr];
+            if(empty($join)){
+                $where[] = [$pk_id, 'in', $ids_arr];
+            }else{
+                $where[] = [$alias.'.'.$pk_id, 'in', $ids_arr];
+            }
 
             //一对多，还是多对一
             if ($field != '*' && count(explodexh(',', $field)) == 1) {
-                $withData[$alias . ':' . $id] = $this->table($table_name)->getColumn($where, $field, $pk_id);
+                $withData[$alias . ':' . $id . ':1' ] = $this->table($table_name)->getColumn($where, $field, $pk_id);
             } else {
-                $getList = $this->table($table_name)->getList($where, $field);
+                $getList = $this->table($table_name)->getList($where, $field, '', $alias, $join, $group);
                 foreach ($getList as $item) {
-                    $withData[$alias . ':' . $id][$item[$pk_id]][] = $item;
+                    $withData[$alias . ':' . $id . ':0' ][$item[$pk_id]][] = $item;
                 }
             }
         }
@@ -366,8 +380,14 @@ class BaseEntity extends Entity
         foreach ($data as &$list) {
             // 加载预加载
             foreach ($withData as $kk => $val) {
-                [$k, $id] = explode(':', $kk);
-                $list[$k] = $val[$list[$id]] ?? '';
+                // 解数据
+                [$k, $id, $type] = explode(':', $kk);
+                if($type==1){
+                    $list[$k] = $val[$list[$id]] ?? '';
+                }else{
+                    $list[$k] = $val[$list[$id]] ?? [];
+                }
+                
             }
         }
     }
