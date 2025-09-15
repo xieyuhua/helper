@@ -325,6 +325,25 @@ class BaseEntity extends Entity
     /**
      * 预加载数据处理
      *
+    $list = $this->with([
+        ['goods_sku', 'sku_list', 'goods_id', 'goods_id'],
+        ['express_template', 'shipping_template_name', 'id', 'shipping_template_id', 'name'],
+    ])->with([
+        [
+            'goods_sub', 'sub_list', 'goods_id', 'goods_id', 
+            'g.goods_status,sku.goods_stock,sku.sku_images,sku.goods_sn,sku.sku_name,sub_list.goods_id,sub_list.sku_id,sub_list.goods_price,sub_list.origin_price,sub_list.discount,sub_list.num,sub_list.id', 
+            [], 
+            [
+                ['goods_sku sku', 'sku.sku_id = sub_list.sku_id', 'inner'],
+                ['goods g', 'sku.goods_id = g.goods_id', 'inner'],
+            ]
+        ]
+    ])->pageList($condition, 
+        '*,get_supplier_name(supplier_id) as supplier_name,get_cate_name(cate_id1) as cate_name1,get_cate_name(cate_id2) as cate_name2,get_cate_name(cate_id3) as cate_name3',
+        'goods_id desc', 
+        $page, 
+        $page_size
+    );
      * @param [type] $data
      * @return void
      */
